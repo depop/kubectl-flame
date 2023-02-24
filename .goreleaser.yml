@@ -10,13 +10,9 @@ builds:
     goos:
       - linux
       - darwin
-      - windows
     goarch:
       - amd64
-      - arm
       - arm64
-      - ppc64le
-    goarm: [6, 7]
     ldflags: |
       -X github.com/depop/kubectl-flame/cli/cmd/version.semver={{ .Tag }}
       -X github.com/depop/kubectl-flame/cli/cmd/version.date={{ .Date }}
@@ -32,12 +28,6 @@ archives:
       {{- end -}}
     builds:
       - kubectl-flame
-    replacements:
-      386: i386
-      amd64: x86_64
-    format_overrides:
-      - goos: windows
-        format: zip
     files: ["LICENSE"]
 checksum:
   name_template: 'checksums.txt'
